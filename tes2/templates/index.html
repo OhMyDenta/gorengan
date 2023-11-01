@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Scores</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          }
+    </style>
+</head>
+<body>
+        <div class="container">
+            <table style="width: 50%;">
+                <div class="section">
+                    <form action="/" method="POST">
+                        <input  placeholder="name" type="text" name="name">
+                        <input  placeholder="score" type="number" name="score">
+                        <input type="submit" value="add score">
+                        <a href="/logout">log out</a>
+
+                    </form>
+                </div>
+                <div>
+                <thead>
+                
+                    <tr>
+                        <th>name</th>
+                        <th>score</th>
+                        <th>Edit</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{student.name}}</td>
+                            <td>{{student.score}}</td> 
+                            <td>
+                                <a href="/edit/{{student['id']}}">Edit</a>
+                                <a href="/delete/{{student['id']}}" onclick="return confirm('apakah anda yakin?');">Delete</a>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+                </div>
+            </table>
+        </div>
+        
+<!--   <h1>Daftar Nilai Siswa</h1>
+    <ul>
+        {% for student in students %}
+            <li>
+                Nama: {{ student['name'] }} - Nilai: {{ student['score'] }}
+                {% if student['score'] > 90 %}
+                    - Congratulations
+                {% elif student['score'] >= 76 %}
+                    - Very good
+                {% else %}
+                    - Maaf, Anda belum lulus
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul> --> 
+</body>
+</html>
